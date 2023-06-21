@@ -5,7 +5,7 @@
 #include "buddyAllocator.h"
 
 
-
+/*
 void *pseudo_malloc(size_t size){
 
      //small allocation quindi uso buddy allocator con bitmap
@@ -34,3 +34,4 @@ void *pseudo_malloc(size_t size){
  
     
 }
+*/
