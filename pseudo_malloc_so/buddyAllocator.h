@@ -1,13 +1,14 @@
-#define PAGE_SIZE 4096 //assumiamo la grandezza di una pagina a 4096 bytes
-#define SMALL_ALLOC_SIZE (PAGE_SIZE/4) //1/4 della size della pagina come da premessa
-#define SMALL_ALLOC_BITMAP_SIZE (1024*1024) //1MB della bitmap
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <unistd.h>
+#include <sys/mman.h>
+
+
+#define PAGE_SIZE 4096  // Dimensione di una pagina in byte
+#define BUDDY_SIZE (1 << 20)  // Dimensione del buddy allocator in byte (1 MB)
+#define MIN_ALLOC_SIZE (PAGE_SIZE / 4)  // Dimensione minima per l'allocazione buddy
 
 
 
-typedef struct BuddyAllocator
-{
-    unsigned char bitmap[SMALL_ALLOC_BITMAP_SIZE]; //bitmap per piccole allocazioni
-};BuddyAllocator;
-
-
-static BuddyAllocator buddyAllocator; //istanza globale buddyallocator
+void *buddy_alloc(size_t size);
